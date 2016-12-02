@@ -1,9 +1,17 @@
+  <?php 
+$cookieactual = "log";
+if (isset($_COOKIE[$cookieactual]))
+{
+	$cookie_value = $_COOKIE[$cookieactual];
+	
+		echo '<a href="index.html">Cerrar session</a>';
+		
+?>
+
+
 <?php
 /*-----------------------
-Autor: Obed Alvarado
-http://www.obedalvarado.pw
-Fecha: 12-06-2015
-Version de PHP: 5.6.3
+
 ----------------------------*/
 	# conectare la base de datos
     $con=@mysqli_connect('localhost', 'root', '', 'capacitacion');
@@ -72,5 +80,13 @@ Version de PHP: 5.6.3
             </div>
 			<?php
 		}
+	}
+?>
+
+
+<?php
+ }else {
+		echo "<div align=\"center\">Iniciar sesion!</div><br>"; 
+	echo "<div align=\"center\"><a href='index.html'>Login</a></div>";
 	}
 ?>

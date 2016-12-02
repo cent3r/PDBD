@@ -1,3 +1,15 @@
+
+
+  <?php 
+$cookieactual = "log";
+if (isset($_COOKIE[$cookieactual]))
+{
+	$cookie_value = $_COOKIE[$cookieactual];
+	
+		echo '<a href="index.html">Cerrar session</a>';
+		
+?>
+
 <form id="guardarDatos">
 <div class="modal fade" id="dataRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
@@ -41,3 +53,10 @@
   </div>
 </div>
 </form>
+
+
+<?php
+ }else {
+
+	}
+?>

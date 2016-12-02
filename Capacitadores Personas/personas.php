@@ -1,3 +1,16 @@
+
+  <?php 
+$cookieactual = "log";
+if (isset($_COOKIE[$cookieactual]))
+{
+	$cookie_value = $_COOKIE[$cookieactual];
+	
+		echo '<a href="index.html">Cerrar session</a>';
+		
+?>
+
+
+
 <?php
 
 	# conectare la base de datos
@@ -87,5 +100,11 @@ ON capacitadores.IDPersona=personas.Id where capacitadores.Estatus='Activo' AND 
             </div>
 			<?php
 		}
+	}
+?>
+<?php
+ }else {
+		echo "<div align=\"center\">Iniciar sesion!</div><br>"; 
+	echo "<div align=\"center\"><a href='index.html'>Login</a></div>";
 	}
 ?>

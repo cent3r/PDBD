@@ -1,15 +1,3 @@
-  <?php 
-$cookieactual = "log";
-if (isset($_COOKIE[$cookieactual]))
-{
-	$cookie_value = $_COOKIE[$cookieactual];
-	
-		echo '<a href="index.html">Cerrar session</a>';
-		
-?>
-
-
-
 <form id="guardarDatos">
 <div class="modal fade" id="dataRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
@@ -27,13 +15,10 @@ if (isset($_COOKIE[$cookieactual]))
 
 
       <div class="form-group">
-            <label for="nombre" class="control-label">IDDepencia: </label>
-            <input type="text" class="form-control" id="IDD" name="IDD" placeholder="Nombre completo" >
+            <label for="nombre" class="control-label">Nombre: </label>
+            <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre completo" >
 	      </div>
-		  <div class="form-group">
-            <label for="curp" class="control-label">Nombre area :</label>
-            <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Ingrese el CUPR" >
-          </div>
+		  <div class="form-group"> </div>
 		  <div class="form-group">
             <label for="fecha" class="control-label"></label>
 		  </div>
@@ -48,11 +33,3 @@ if (isset($_COOKIE[$cookieactual]))
   </div>
 </div>
 </form>
-
-
-<?php
- }else {
-		echo "<div align=\"center\">Iniciar sesion!</div><br>"; 
-	echo "<div align=\"center\"><a href='index.html'>Login</a></div>";
-	}
-?>

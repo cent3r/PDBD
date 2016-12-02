@@ -1,3 +1,18 @@
+
+  <?php 
+$cookieactual = "log";
+if (isset($_COOKIE[$cookieactual]))
+{
+	$cookie_value = $_COOKIE[$cookieactual];
+	
+	
+		
+?>
+
+
+
+
+
 <form id="actualidarDatos">
 <div class="modal fade" id="dataUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
   <div class="modal-dialog" role="document">
@@ -88,3 +103,9 @@
   </div>
 </div>
 </form>
+<?php
+ }else {
+		echo "<div align=\"center\">Iniciar sesion!</div><br>"; 
+	echo "<div align=\"center\"><a href='index.html'>Login</a></div>";
+	}
+?>

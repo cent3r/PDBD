@@ -1,17 +1,10 @@
-  <?php 
-$cookieactual = "log";
-if (isset($_COOKIE[$cookieactual]))
-{
-	$cookie_value = $_COOKIE[$cookieactual];
-	
-		echo '<a href="index.html">Cerrar session</a>';
-		
-?>
-
-
-
 <?php
-
+/*-----------------------
+Autor: Obed Alvarado
+http://www.obedalvarado.pw
+Fecha: 12-06-2015
+Version de PHP: 5.6.3
+----------------------------*/
 	# conectare la base de datos
     $con=@mysqli_connect('localhost', 'root', '', 'capacitacion');
     if(!$con){
@@ -25,16 +18,16 @@ if (isset($_COOKIE[$cookieactual]))
 		include 'pagination.php'; //incluir el archivo de paginación
 		//las variables de paginación
 		$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
-		$per_page = 10; //la cantidad de registros que desea mostrar
+		$per_page = 5; //la cantidad de registros que desea mostrar
 		$adjacents  = 5; //brecha entre páginas después de varios adyacentes
 		$offset = ($page - 1) * $per_page;
 		//Cuenta el número total de filas de la tabla*/
-		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM dependencias WHERE Estatus = 'Activo' ");
+		$count_query   = mysqli_query($con,"SELECT count(*) AS numrows FROM nombrecurso WHERE Estatus = 'Activo' ");
 		if ($row= mysqli_fetch_array($count_query)){$numrows = $row['numrows'];}
 		$total_pages = ceil($numrows/$per_page);
 		$reload = 'index.php';
 		//consulta principal para recuperar los datos
-		$query = mysqli_query($con,"SELECT * FROM dependencias WHERE Estatus = 'Activo' order by Nombre LIMIT $offset,$per_page");
+		$query = mysqli_query($con,"SELECT * FROM nombrecurso WHERE Estatus = 'Activo' order by Nombre LIMIT $offset,$per_page");
 		
 		if ($numrows>0){
 			?>
@@ -42,6 +35,7 @@ if (isset($_COOKIE[$cookieactual]))
 			  <thead>
 				<tr>
 				  <th>Nombre</th>
+				 
 
 				  <th>Acciones</th>
 				</tr>
@@ -51,10 +45,11 @@ if (isset($_COOKIE[$cookieactual]))
 			while($row = mysqli_fetch_array($query)){
 				?>
 				<tr>
+					
 					<td><?php echo $row['Nombre'];?></td>
 
 					<td>
-						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#dataUpdate" data-id ="<?php echo $row['Id']?>" data-nombre="<?php echo $row['Nombre']?>"  ><i class='glyphicon glyphicon-edit'></i> Modificar</button>
+						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#dataUpdate"  data-nombre="<?php echo $row['Nombre']?>" ><i class='glyphicon glyphicon-edit'></i> Modificar</button>
 						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#dataDelete" data-id="<?php echo $row['Id']?>"  ><i class='glyphicon glyphicon-trash'></i> Eliminar</button>
 					</td>
 				</tr>
@@ -77,11 +72,5 @@ if (isset($_COOKIE[$cookieactual]))
             </div>
 			<?php
 		}
-	}
-?>
-<?php
- }else {
-		echo "<div align=\"center\">Iniciar sesion!</div><br>"; 
-	echo "<div align=\"center\"><a href='index.html'>Login</a></div>";
 	}
 ?>
