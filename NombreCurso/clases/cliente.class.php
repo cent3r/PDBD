@@ -11,13 +11,12 @@ class Cliente{
 	function insertar($campos){
 		if($this->con->conectar()==true){
 			
-			return mysql_query("INSERT INTO nombrecurso (Nombre) VALUES ('".$campos[0]."')");
+			return mysql_query("INSERT INTO nombrecurso (Nombre,Estatus) VALUES ('".$campos[0]."','Activo')");
 		}
 	}
 	
 	function actualizar($campos,$Id){
 		if($this->con->conectar()==true){
-			//print_r($campos);
 			return mysql_query("UPDATE nombrecurso SET Nombre = '".$campos[0]."' WHERE Id = ".$Id);
 		}
 	}
@@ -30,7 +29,7 @@ class Cliente{
 
 	function mostrar_clientes(){
 		if($this->con->conectar()==true){
-			return mysql_query("SELECT * FROM nombrecurso ORDER BY Id DESC");
+			return mysql_query("SELECT * FROM nombrecurso where Estatus='Activo' ORDER BY Id DESC");
 		}
 	}
 
